@@ -1,0 +1,276 @@
+/* Sayfa Sıfırlama (Reset) */
+* {
+    box-sizing: border-box; /* Kutuların boyutunu taşmasını engeller */
+    margin: 0;
+    padding: 0;
+}
+
+/* Genel Sayfa Yapısı */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Yazı tipi */
+    background-color: #f4f7f6; /* Açık gri arka plan */
+    color: #333; /* Koyu gri yazı rengi */
+    line-height: 1.6; /* Satır aralığı */
+}
+
+/* Navbar (Üst Menü) Tasarımı - FLEXBOX BURADA */
+nav {
+    background-color: #2c3e50; /* Koyu lacivert */
+    color: white;
+    display: flex; /* Öğeleri yan yana dizer */
+    justify-content: space-between; /* Sağa ve sola yaslar */
+    align-items: center; /* Dikeyde ortalar */
+    padding: 1rem 2rem; /* İç boşluk */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Hafif gölge */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2ecc71; /* Yeşil logo rengi (İris yaprağı rengi) */
+    background-color: transparent;
+}
+
+nav ul {
+    list-style: none; /* Liste noktalarını kaldırır */
+    display: flex; /* Linkleri yan yana dizer */
+    gap: 20px; /* Linkler arası boşluk */
+}
+
+nav a {
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    color: white;
+    transition: color 0.3s ease; /* Renk değişimi animasyonu */
+}
+
+nav a:hover {
+    color: #2ecc71; /* Mouse üzerine gelince yeşil olur */
+}
+
+/* Ana İçerik Alanı */
+.container {
+    max-width: 1100px; /* İçerik çok genişlemesin */
+    margin: 20px auto; /* Ortala */
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px; /* Köşeleri yuvarla */
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    min-height: 60vh; /* Sayfa boşsa bile belli bir yükseklik olsun */
+}
+
+/* Footer (Alt Bilgi) */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* Genel Buton Tasarımı (Formlarda kullanırsın) */
+.btn {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #27ae60; /* Koyu yeşil */
+}
+/* --- TABLO TASARIMI (style.css'in en altına ekle) --- */
+
+.table-container {
+    overflow-x: auto; /* Mobilde tablo taşarsa kaydırma çubuğu çıkarır */
+}
+
+table {
+    width: 100%; /* Tablo tüm genişliği kaplasın */
+    border-collapse: collapse; /* Çizgiler arasında boşluk kalmasın */
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Hafif gölge */
+    border-radius: 5px 5px 0 0; /* Sadece üst köşeleri yuvarla */
+    overflow: hidden; /* Yuvarlatılmış köşelerden taşmayı engelle */
+}
+
+/* Tablo Başlığı (thead) */
+table thead tr {
+    background-color: #009879; /* Koyu Yeşil (Tema Rengi) */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Tablo Hücreleri (th, td) */
+table th, table td {
+    padding: 12px 15px; /* İç boşluk vererek ferahlat */
+}
+
+/* Tablo Satırları (Zebra Striping - En Önemli Kısım) */
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3; /* Çift numaralı satırları gri yap */
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879; /* En alt çizgi kalın yeşil olsun */
+}
+
+/* Hover Efekti (Mouse ile üzerine gelince) */
+table tbody tr:hover {
+    font-weight: bold;
+    color: #009879;
+    cursor: pointer; /* Tıklanabilir hissi ver */
+}
+
+/* İşlem Butonları (Düzenle/Sil) için Ufak Tasarım */
+.action-btn {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+.edit-btn { background-color: #f39c12; } /* Turuncu */
+.delete-btn { background-color: #c0392b; } /* Kırmızı */
+/* --- FORM TASARIMI (style.css en altına ekle) --- */
+
+/* Formu kapsayan kutu (Ortalamak için) */
+.form-wrapper {
+    max-width: 400px; /* Form çok geniş olmasın */
+    margin: 40px auto; /* Sayfanın ortasına gelsin */
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Daha belirgin bir gölge */
+    border: 1px solid #eee;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Form Elemanları Arası Boşluk */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Label üstte dursun */
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Girdi Alanları (Input) */
+.form-control {
+    width: 100%; /* Kapsayıcının tamamını kaplasın */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s; /* Renk geçişi yumuşak olsun */
+}
+
+/* Input'a tıklayınca (Focus) olan efekt */
+.form-control:focus {
+    border-color: #2ecc71; /* Yeşil çerçeve */
+    outline: none; /* Varsayılan mavi ışığı kaldır */
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.3); /* Hafif yeşil parlama */
+}
+
+/* Form altındaki linkler (Kayıt ol vb.) */
+.form-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.form-footer a {
+    color: #2ecc71;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- FORM TASARIMI (style.css en altına ekle) --- */
+
+/* Formu kapsayan kutu (Ortalamak için) */
+.form-wrapper {
+    max-width: 400px; /* Form çok geniş olmasın */
+    margin: 40px auto; /* Sayfanın ortasına gelsin */
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Daha belirgin bir gölge */
+    border: 1px solid #eee;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Form Elemanları Arası Boşluk */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Label üstte dursun */
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Girdi Alanları (Input) */
+.form-control {
+    width: 100%; /* Kapsayıcının tamamını kaplasın */
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s; /* Renk geçişi yumuşak olsun */
+}
+
+/* Input'a tıklayınca (Focus) olan efekt */
+.form-control:focus {
+    border-color: #2ecc71; /* Yeşil çerçeve */
+    outline: none; /* Varsayılan mavi ışığı kaldır */
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.3); /* Hafif yeşil parlama */
+}
+
+/* Form altındaki linkler (Kayıt ol vb.) */
+.form-footer {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.form-footer a {
+    color: #2ecc71;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}

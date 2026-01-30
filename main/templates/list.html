@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Çiçek Listesi</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <nav>
+        <div class="logo" style="display: flex; align-items: center;">
+            <img src="{% static 'logo.jpg' %}" style="height: 50px; margin-right: 10px;">
+            <span style="font-size: 1.8rem; font-weight: bold; color: white; letter-spacing: 1px;">IrisAI</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'list_view' %}">List</a></li>
+            <li><a href="{% url 'add_view' %}">Add Data</a></li>
+            <li><a href="{% url 'search_view' %}">Search</a></li>
+            <li><a href="{% url 'predict_view' %}">🤖 AI Prediction</a></li>
+            {% if user.is_authenticated %}
+                <li><span style="color:white; margin-right:10px;">Merhaba, {{ user.username }}</span></li>
+                <li><a href="{% url 'logout' %}" style="color: #e74c3c; border: 1px solid #e74c3c; padding: 5px 10px; border-radius: 4px;">Çıkış</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2>🌿 Iris Flower List</h2>
+            <div style="display: flex; gap: 10px;">
+                <a href="{% url 'import_iris_csv' %}" class="btn" style="background-color: #3498db;">📂 CSV Yükle</a>
+                <a href="{% url 'export_iris_csv' %}" class="btn" style="background-color: #27ae60;">📥 CSV İndir</a>
+                <a href="{% url 'add_view' %}" class="btn">+ Yeni Ekle</a>
+            </div>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div style="padding: 10px; background-color: #d4edda; color: #155724; margin-bottom: 15px; border-radius: 5px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Species</th>
+                        <th>Sepal L</th>
+                        <th>Sepal W</th>
+                        <th>Petal L</th>
+                        <th>Petal W</th>
+                        <th style="text-align: right;">Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for plant in plants %}
+                    <tr>
+                        <td>{{ plant.id }}</td>
+                        <td>{{ plant.species }}</td>
+                        <td>{{ plant.sepal_length }}</td>
+                        <td>{{ plant.sepal_width }}</td>
+                        <td>{{ plant.petal_length }}</td>
+                        <td>{{ plant.petal_width }}</td>
+                        <td style="text-align: right;">
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'update_view' plant.id %}" class="action-btn edit-btn">Edit</a>
+                                {% if user.is_staff %}
+                                    <a href="{% url 'delete_view' plant.id %}" onclick="return confirm('Silmek istediğinize emin misiniz?');" class="action-btn delete-btn">Sil</a>
+                                {% endif %}
+                            {% else %}
+                                <small style="color:#999;">Yetki Yok</small>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 20px;">
+                            Henüz kayıtlı veri yok.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Iris Data Project</p>
+    </footer>
+
+</body>
+</html>

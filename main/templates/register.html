@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Iris Project</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+    <nav style="justify-content: center;">
+        <div class="logo" style="display: flex; align-items: center;">
+            <img src="../static/logo.jpg" style="height: 50px; margin-right: 10px;">
+            
+            <span style="font-size: 1.8rem; font-weight: bold; color: white; letter-spacing: 1px;">IrisAI</span>
+        </div>
+        </nav>
+
+    <div class="container">
+        
+        <div class="form-wrapper">
+            <h2 class="form-title">Create a new account</h2>
+            
+            <form action="" method="POST">
+                
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" name="username" class="form-control" placeholder="Choose a User Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" class="form-control" placeholder="ornek@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Şifre</label>
+                    <input type="password" name="password" class="form-control" placeholder="Create a strong password" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Re-enter Password</label>
+                    <input type="password" name="password_confirm" class="form-control" placeholder="Re-enter Password" required>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Register</button>
+            </form>
+
+            <div class="form-footer">
+                Already have an account? <a href="login.html">Log in</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Iris Data Project</p>
+    </footer>
+
+</body>
+</html>

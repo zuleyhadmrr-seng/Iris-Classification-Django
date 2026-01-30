@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Prediction</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <img src="{% static 'logo.jpg' %}" height="50">
+    <a href="list.html" style="color:white; text-decoration:none; margin-left: 20px;">Ana Sayfaya Dön</a>
+</nav>
+
+<div class="container" style="text-align: center;">
+    <h2>🤖 Iris AI Prediction</h2>
+    <p>Çiçek özelliklerini girin ve yapay zeka türünü tahmin etsin.</p>
+
+    <form method="POST" style="max-width: 400px; margin: 0 auto; text-align: left;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 10px;">
+            <label>Sepal Length:</label>
+            <input type="number" step="0.1" name="sl" placeholder="Örn: 5.1" required style="width: 100%; padding: 8px;">
+        </div>
+        
+        <div style="margin-bottom: 10px;">
+            <label>Sepal Width:</label>
+            <input type="number" step="0.1" name="sw" placeholder="Örn: 3.5" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Petal Length:</label>
+            <input type="number" step="0.1" name="pl" placeholder="Örn: 1.4" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Petal Width:</label>
+            <input type="number" step="0.1" name="pw" placeholder="Örn: 0.2" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label>Algoritma Seç:</label>
+            <select name="model_type" style="width: 100%; padding: 8px;">
+                <option value="dt">Decision Tree (Karar Ağacı)</option>
+                <option value="knn">K-Nearest Neighbors (KNN)</option>
+                <option value="svm">Support Vector Machine (SVM)</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">Tahmin Et</button>
+    </form>
+
+    {% if result %}
+        <div style="margin-top: 30px; padding: 20px; background-color: #e8f8f5; border: 1px solid #2ecc71; border-radius: 8px;">
+            <h3>Sonuç: <span style="color: #27ae60;">{{ result }}</span></h3>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html></body>
+</html>
