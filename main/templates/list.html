@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iris Çiçek Listesi</title>
+    <title>Iris Flower List</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
@@ -20,10 +20,10 @@
             <li><a href="{% url 'search_view' %}">Search</a></li>
             <li><a href="{% url 'predict_view' %}">🤖 AI Prediction</a></li>
             {% if user.is_authenticated %}
-                <li><span style="color:white; margin-right:10px;">Merhaba, {{ user.username }}</span></li>
-                <li><a href="{% url 'logout' %}" style="color: #e74c3c; border: 1px solid #e74c3c; padding: 5px 10px; border-radius: 4px;">Çıkış</a></li>
+                <li><span style="color:white; margin-right:10px;">Hello, {{ user.username }}</span></li>
+                <li><a href="{% url 'logout' %}" style="color: #e74c3c; border: 1px solid #e74c3c; padding: 5px 10px; border-radius: 4px;">Log Out</a></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                <li><a href="{% url 'login' %}">Log In</a></li>
             {% endif %}
         </ul>
     </nav>
@@ -76,14 +76,14 @@
                                     <a href="{% url 'delete_view' plant.id %}" onclick="return confirm('Silmek istediğinize emin misiniz?');" class="action-btn delete-btn">Sil</a>
                                 {% endif %}
                             {% else %}
-                                <small style="color:#999;">Yetki Yok</small>
+                                <small style="color:#999;">No authority</small>
                             {% endif %}
                         </td>
                     </tr>
                     {% empty %}
                     <tr>
                         <td colspan="7" style="text-align: center; padding: 20px;">
-                            Henüz kayıtlı veri yok.
+                            No data has been recorded yet.
                         </td>
                     </tr>
                     {% endfor %}
