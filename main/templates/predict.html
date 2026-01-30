@@ -15,7 +15,7 @@
 
 <div class="container" style="text-align: center;">
     <h2>🤖 Iris AI Prediction</h2>
-    <p>Çiçek özelliklerini girin ve yapay zeka türünü tahmin etsin.</p>
+    <p>Enter the flower characteristics and let the AI guess the species.</p>
 
     <form method="POST" style="max-width: 400px; margin: 0 auto; text-align: left;">
         {% csrf_token %}
@@ -41,7 +41,7 @@
         </div>
 
         <div style="margin-bottom: 20px;">
-            <label>Algoritma Seç:</label>
+            <label>Choose Algorithm:</label>
             <select name="model_type" style="width: 100%; padding: 8px;">
                 <option value="dt">Decision Tree (Karar Ağacı)</option>
                 <option value="knn">K-Nearest Neighbors (KNN)</option>
@@ -49,12 +49,12 @@
             </select>
         </div>
 
-        <button type="submit" class="btn" style="width: 100%;">Tahmin Et</button>
+        <button type="submit" class="btn" style="width: 100%;">Guess</button>
     </form>
 
     {% if result %}
         <div style="margin-top: 30px; padding: 20px; background-color: #e8f8f5; border: 1px solid #2ecc71; border-radius: 8px;">
-            <h3>Sonuç: <span style="color: #27ae60;">{{ result }}</span></h3>
+            <h3>Result: <span style="color: #27ae60;">{{ result }}</span></h3>
         </div>
     {% endif %}
 </div>
